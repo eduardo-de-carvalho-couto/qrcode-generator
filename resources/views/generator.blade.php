@@ -38,6 +38,22 @@
                 <h1 class="text-4xl mb-2">QR Code Image Generator</h1>
             </div>
 
+            @if ($errors->any())
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative font-bold">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+
+            @isset($mensagemSucesso)
+            <div class="flex items-center bg-blue-500 text-white text-sm font-bold px-4 py-3">
+                {{ $mensagemSucesso }}
+            </div>
+            @endisset
+
             @isset($QRCode)
             <div class="flex justify-center">
                 {{$QRCode}}
@@ -51,10 +67,10 @@
                 <input class="text-sm w-full mb-4 pl-3 rounded border py-2 shadow focus:outline-none hover:border-cinza-claro hover:ring-1 hover:ring-cinza-escuro focus:border-cinza-escuro focus:ring-1 focus:ring-cinza-escuro" id="nome" type="text" name="name" placeholder="Jhon">    
 
                 <label class="text-sm font-bold text-gray-700 mb-2" for="linkedin">Linkedin URL</label>
-                <input class="text-sm w-full mb-4 pl-3 rounded border py-2 shadow focus:outline-none hover:border-cinza-claro hover:ring-1 hover:ring-cinza-escuro focus:border-cinza-escuro focus:ring-1 focus:ring-cinza-escuro" id="linkedin" type="url" name="linkedin" placeholder="https://www.linkedin.com/company/buzzvel">
+                <input class="text-sm w-full mb-4 pl-3 rounded border py-2 shadow focus:outline-none hover:border-cinza-claro hover:ring-1 hover:ring-cinza-escuro focus:border-cinza-escuro focus:ring-1 focus:ring-cinza-escuro" id="linkedin" type="text" name="linkedin" placeholder="https://www.linkedin.com/company/buzzvel">
 
                 <label class="text-sm font-bold text-gray-700 mb-2" for="github">Github URL</label>
-                <input class="text-sm w-full mb-4 pl-3 rounded border py-2 shadow focus:outline-none hover:border-cinza-claro hover:ring-1 hover:ring-cinza-escuro focus:border-cinza-escuro focus:ring-1 focus:ring-cinza-escuro" id="github" type="url" name="github" placeholder="https://www.github.com/buzzvel">
+                <input class="text-sm w-full mb-4 pl-3 rounded border py-2 shadow focus:outline-none hover:border-cinza-claro hover:ring-1 hover:ring-cinza-escuro focus:border-cinza-escuro focus:ring-1 focus:ring-cinza-escuro" id="github" type="text" name="github" placeholder="https://www.github.com/buzzvel">
                 <button type="submit" class="font-bold text-white bg-cinza-escuro w-full py-2 rounded-full shadow-2xl hover:bg-cinza-hover duration-150">
                     Generate Image
                 </button>

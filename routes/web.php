@@ -20,6 +20,5 @@ Route::get('/', function () {
 
 Route::post('/generator', [CardController::class, 'getCard'])->name('get.card');
 Route::get('/generator', [CardController::class, 'index'])->name('generator.index');
-//Route::post('/generator', [CardController::class, 'cardStore'])->name('generator.store');
 Route::get('/generator/{card}', [CardController::class, 'generateQRCode'])->name('generator.qrcode');
 
