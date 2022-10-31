@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('generator');
 });
+
+Route::post('/generator', [CardController::class, 'getCard'])->name('get.card');
+Route::get('/generator', [CardController::class, 'index'])->name('generator.index');
+//Route::post('/generator', [CardController::class, 'cardStore'])->name('generator.store');
+Route::get('/generator/{card}', [CardController::class, 'generateQRCode'])->name('generator.qrcode');
+
