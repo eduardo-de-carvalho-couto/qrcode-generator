@@ -40,7 +40,7 @@
 
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin condimentum ligula quis massa sollicitudin, sed porttitor lorem tempus.</p>
 
-            <ul class="border flex justify-center space-between">
+            <ul class="flex justify-center space-between">
                 <li class=" space-x-20">
                     <a  href="{{$linkedin}}" class="font-bold text-white bg-cinza-escuro w-full px-9 py-2.5 mr-2 mb-2 rounded-full shadow-2xl hover:bg-cinza-hover duration-150">
                         LinkedIn
