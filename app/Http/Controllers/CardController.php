@@ -48,16 +48,24 @@ class CardController extends Controller
 
     public function generateQRCode(int $cardId)
     {
-        $card = Card::find($cardId);
+        $card = Card::with('user')->find($cardId);
 
         if(is_null($card)){
             return to_route('generator.index');
         }
 
-        $QRCode = QrCode::size(150)->generate(url("/" . $card->id . "/" . $card->user->name));
+        $QRCode = QrCode::size(150)->generate(url("/card/" . $card->id . "/" . strtolower($card->user->name)));
 
         $mensagemSucesso = session('mensagem.sucesso');
 
         return view('generator')->with('QRCode', $QRCode)->with('mensagemSucesso', $mensagemSucesso);
+    }
+
+    public function showCard(Card $card)
+    {
+        $user = $card->user->toArray();
+        [$name, $linkedin, $github] = [$user['name'], $user['linkedin'], $user['github']];
+
+        return view('card')->with('name', $name)->with('linkedin', $linkedin)->with('github', $github);
     }
 }
